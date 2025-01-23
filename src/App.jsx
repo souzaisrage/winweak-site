@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import winweaklogo from "../public/Images/winweakklogo.png";
 import imagebanner from "../public/Images/easyfastfree.png";
-import videoloop from "../public/Images/blueloop.mp4";
+import Videoloop from "../public/Images/blueloop.mp4";
 import githublogo from "../public/Images/Orion_github.svg";
 import windowsLogo from "../public/Images/windowslogo.png";
 
@@ -63,7 +63,7 @@ export default function App() {
       <section className="relative flex items-center justify-center h-96 bg-gray-900">
         <video 
           className="absolute inset-0 w-full h-full object-cover blur-md" 
-          src={videoloop} 
+          src={Videoloop} 
           autoPlay 
           muted 
           loop
