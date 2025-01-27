@@ -41,7 +41,7 @@ export default function App() {
             </div>
           </a>
             <a
-            href="https://github.com/souzaisrage/dxp-app"
+            href="https://github.com/souzaisrage/winweak-app"
             target="_blank"
             rel="noopener noreferrer"
             class="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-9 px-4 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
@@ -124,7 +124,7 @@ export default function App() {
             
             <div className="flex justify-center space-x-6">
               <a
-                href="https://github.com/souzaisrage/dxp-app"
+                href="https://github.com/souzaisrage/winweak-app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-gray-400 transition-colors"
