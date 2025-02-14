@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import winweaklogo from "../public/Images/winweakklogo.png";
 import imagebanner from "../public/Images/easyfastfree.png";
 import Videoloop from "../public/Images/blueloop.mp4";
@@ -48,21 +49,23 @@ export default function App() {
     <>
       <header className="flex justify-between items-center p-4 bg-blue-600">
         <div className="flex items-center space-x-4">
-          <img
+          <motion.img
             src={winweaklogo}
             alt="DriverXPress Logo"
             className="h-14 w-14 logo-spin"
+            whileHover={{ scale: 1.1 }}
           />
           <h1 className="text-white text-4xl font-varelmo transition-colors duration-300 ease-in-out">
             WinWeak
           </h1>
         </div>
         <nav className="flex items-center space-x-6">
-          <a
+          <motion.a
             href="https://www.paypal.com/paypalme/Souzawow"
             target="_blank"
             rel="noopener noreferrer"
             className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-9 px-4 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+            whileHover={{ scale: 1.05 }}
           >
             <span
               className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
@@ -71,12 +74,13 @@ export default function App() {
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="39px" fill="#e8eaed"> <path d="M640-440 474-602q-31-30-52.5-66.5T400-748q0-55 38.5-93.5T532-880q32 0 60 13.5t48 36.5q20-23 48-36.5t60-13.5q55 0 93.5 38.5T880-748q0 43-21 79.5T807-602L640-440Zm0-112 109-107q19-19 35-40.5t16-48.5q0-22-15-37t-37-15q-14 0-26.5 5.5T700-778l-60 72-60-72q-9-11-21.5-16.5T532-800q-22 0-37 15t-15 37q0 27 16 48.5t35 40.5l109 107ZM280-220l278 76 238-74q-5-9-14.5-15.5T760-240H558q-27 0-43-2t-33-8l-93-31 22-78 81 27q17 5 40 8t68 4q0-11-6.5-21T578-354l-234-86h-64v220ZM40-80v-440h304q7 0 14 1.5t13 3.5l235 87q33 12 53.5 42t20.5 66h80q50 0 85 33t35 87v40L560-60l-280-78v58H40Zm80-80h80v-280h-80v280Zm520-546Z"/> </svg>
               <span className="ml-1 text-white">Donate</span>
             </div>
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="https://github.com/souzaisrage/winweak-app"
             target="_blank"
             rel="noopener noreferrer"
             className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-9 px-4 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+            whileHover={{ scale: 1.05 }}
           >
             <span
               className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
@@ -89,7 +93,7 @@ export default function App() {
               </svg>
               <span className="ml-1 text-white">GitHub</span>
             </div>
-          </a>
+          </motion.a>
         </nav>
       </header>
       <section className="relative flex items-center justify-center h-96 bg-gray-900">
@@ -100,6 +104,7 @@ export default function App() {
           muted
           loop
         ></video>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/50 to-black/50"></div>
         <div className="relative z-10 flex flex-col items-center space-y-6 text-white">
           <h2 className="text-4xl font-bold font">Tweak Your System and Update Your Device Drivers Now!</h2>
           <p className="text-sm text-gray-500 mt-2 flex items-center justify-center">
@@ -111,8 +116,9 @@ export default function App() {
             Windows
           </p>
           <div className="text-center">
-            <button
-              className="cursor-pointer flex justify-between bg-blue-600 px-3 py-2 rounded-full text-white tracking-wider shadow-xl hover:bg-black hover:scale-105 duration-500 hover:ring-1 font-mono w-[150px]"
+            <motion.button
+              className="cursor-pointer flex justify-between bg-blue-600 px-6 py-3 rounded-full text-white tracking-wider shadow-xl hover:bg-black hover:scale-105 duration-500 hover:ring-1 font-mono w-[180px]"
+              whileHover={{ scale: 1.1 }}
             >
               Download
               <svg
@@ -129,10 +135,9 @@ export default function App() {
                   d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
                 ></path>
               </svg>
-            </button>
+            </motion.button>
           </div>
         </div>
-        <div className="absolute inset-0 bg-black opacity-40"></div>
       </section>
       <section className="bg-black p-8">
         <div className="flex flex-col md:flex-row items-center md:space-x-8">
@@ -144,20 +149,27 @@ export default function App() {
           </div>
           <div className="md:w-1/2">
             <div className="relative">
-              <div className="overflow-hidden">
+              <AnimatePresence>
                 {slides.map((slide, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className={`transition-opacity duration-1000 ${
-                      index === currentSlide ? 'opacity-100' : 'opacity-0 absolute top-0'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: index === currentSlide ? 1 : 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    className={`absolute top-0 left-0 w-full ${
+                      index === currentSlide ? 'block' : 'hidden'
                     }`}
                   >
                     <h3 className="text-2xl font-bold mb-4 text-white">{slide.title}</h3>
                     <p className="text-white mb-4">{slide.content}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-              <div className="flex justify-center space-x-2 mt-4">
+              </AnimatePresence>          
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center space-x-2 mt-4">
                 {slides.map((_, index) => (
                   <button
                     key={index}
@@ -168,15 +180,11 @@ export default function App() {
                   ></button>
                 ))}
               </div>
-              
-            </div>
-          </div>
-        </div>
         <section className="bg-black py-12">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="text-center">
+              <motion.div className="text-center bg-gray-800 p-6 rounded-lg shadow-lg" whileHover={{ scale: 1.1 }}>
                 <div className="flex justify-center mb-4">
                   <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -184,10 +192,10 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Driver Updates</h3>
                 <p className="text-gray-400">Keep your drivers up-to-date with the latest versions for optimal performance.</p>
-              </div>
+              </motion.div>
 
               {/* Feature 2 */}
-              <div className="text-center">
+              <motion.div className="text-center bg-gray-800 p-6 rounded-lg shadow-lg" whileHover={{ scale: 1.10 }}>
                 <div className="flex justify-center mb-4">
                   <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -195,10 +203,10 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">System Optimization</h3>
                 <p className="text-gray-400">Optimize your system settings to ensure smooth and efficient operation.</p>
-              </div>
+              </motion.div>
 
               {/* Feature 3 */}
-              <div className="text-center">
+              <motion.div className="text-center bg-gray-800 p-6 rounded-lg shadow-lg" whileHover={{ scale: 1.10 }}>
                 <div className="flex justify-center mb-4">
                   <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -206,12 +214,13 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Fast & Easy</h3>
                 <p className="text-gray-400">Quick and easy-to-use interface to get your system running at its best.</p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
+        
         <hr className="border-t-2 border-gray-500" />
-        <div className="bg-black text-white py-8 mt-8 text-center">
+        <div className=" text-white py-8 mt-8 text-center">
           <div className="space-y-6">
             <div className="flex justify-center space-x-6">
               <a
