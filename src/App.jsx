@@ -8,6 +8,19 @@ import windowsLogo from "../public/Images/windowslogo.png";
 
 const BASE_URL = import.meta.env.BASE_URL;
 
+const testimonials = [
+  { text: "WinWeak boosted my FPS by 20%! Super easy to use!", user: "Alex G.", avatar: "🖱️" },
+  { text: "No more crashes or lag since I started using this. Love it.", user: "Jamie R.", avatar: "🎮" },
+  { text: "The UI is clean, and the features just work. 10/10.", user: "NotZeetaa", avatar: "💻" },
+  { text: "Saved me from constant driver headaches. Thank you!", user: "L31RB4", avatar: "🧠" },
+  { text: "Perfect tool for my gaming setup. Performance boost is real.", user: "Rafael B.", avatar: "🎧" },
+  { text: "I used to struggle with driver updates. Not anymore!", user: "Taylor H.", avatar: "🛠️" },
+  { text: "Made my old laptop feel new again. Incredible.", user: "Jordan C.", avatar: "🔥" },
+  { text: "Highly recommend for anyone who tweaks Windows regularly.", user: "Osama S.", avatar: "🧰" },
+  { text: "Fast, reliable, and lightweight. Just what I needed.", user: "Xavier B.", avatar: "⚡" },
+  { text: "A must-have for gamers and techies alike.", user: "Casey O.", avatar: "🎯" }
+];
+
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -218,7 +231,56 @@ export default function App() {
             </div>
           </div>
         </section>
-        
+
+        <section className="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white">
+  <h3 className="text-center text-4xl font-bold mb-12">What Users Are Saying</h3>
+
+  <div className="overflow-x-hidden px-6 testimonials-scroll relative">
+    <div className="flex space-x-6 w-max animate-scroll">
+      {testimonials.map((t, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.05, duration: 0.4 }}
+          className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
+        >
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="text-3xl">{t.avatar}</div>
+            <div>
+              <p className="text-lg font-semibold">{t.user}</p>
+              <p className="text-gray-400 text-sm">Verified User</p>
+            </div>
+          </div>
+          <p className="text-gray-300 italic">"{t.text}"</p>
+        </motion.div>
+      ))}
+      {/* Duplicate testimonials to create the infinite loop effect */}
+      {testimonials.map((t, i) => (
+        <motion.div
+          key={i + testimonials.length}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.05, duration: 0.4 }}
+          className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
+        >
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="text-3xl">{t.avatar}</div>
+            <div>
+              <p className="text-lg font-semibold">{t.user}</p>
+              <p className="text-gray-400 text-sm">Verified User</p>
+            </div>
+          </div>
+          <p className="text-gray-300 italic">"{t.text}"</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+     
         <hr className="border-t-2 border-gray-500" />
         <div className=" text-white py-8 mt-8 text-center">
           <div className="space-y-6">

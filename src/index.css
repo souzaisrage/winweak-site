@@ -26,6 +26,46 @@
     transition:ease-in;
 }
 
+/* Custom horizontal scrollbar */
+.testimonials-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .testimonials-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .testimonials-scroll::-webkit-scrollbar-thumb {
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    border-radius: 9999px;
+  }
+  
+  .testimonials-scroll {
+    scrollbar-color: #3b82f6 transparent; /* Firefox */
+    scrollbar-width: thin;
+  }
+
+  @keyframes scroll-loop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Adjust for 50% to wrap around */
+    }
+  }
+  
+  /* Apply continuous scrolling animation */
+  .animate-scroll {
+    display: flex;
+    animation: scroll-loop 30s linear infinite; /* Loop the animation */
+  }
+  
+  /* Make sure to hide vertical overflow */
+  .testimonials-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  
+
 
 
 
