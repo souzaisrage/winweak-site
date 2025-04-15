@@ -16,7 +16,7 @@ const testimonials = [
   { text: "Perfect tool for my gaming setup. Performance boost is real.", user: "Rafael B.", avatar: "🎧" },
   { text: "I used to struggle with driver updates. Not anymore!", user: "Taylor H.", avatar: "🛠️" },
   { text: "Made my old laptop feel new again. Incredible.", user: "Jordan C.", avatar: "🔥" },
-  { text: "Highly recommend for anyone who tweaks Windows regularly.", user: "Osama S.", avatar: "🧰" },
+  { text: "Highly recommend for anyone who tweaks Windows regularly.", user: "Osama S.", avatar: "🔌" },
   { text: "Fast, reliable, and lightweight. Just what I needed.", user: "Xavier B.", avatar: "⚡" },
   { text: "A must-have for gamers and techies alike.", user: "Casey O.", avatar: "🎯" }
 ];
