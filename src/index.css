@@ -63,6 +63,46 @@
     overflow-x: hidden;
     overflow-y: hidden;
   }
+
+  /* Mobile Styles */
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-container {
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .btn-donate, .btn-github {
+    margin-top: 1rem;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .feature-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .testimonial-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
   
   
 

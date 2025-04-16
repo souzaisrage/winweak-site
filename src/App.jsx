@@ -6,6 +6,8 @@ import Videoloop from "../public/Images/blueloop.mp4";
 import githublogo from "../public/Images/Orion_github.svg";
 import windowsLogo from "../public/Images/windowslogo.png";
 
+
+
 const BASE_URL = import.meta.env.BASE_URL;
 
 const testimonials = [
@@ -129,6 +131,7 @@ export default function App() {
             Windows
           </p>
           <div className="text-center">
+            <a href="https://github.com/souzaisrage/winweak-app" target='_blank'>
             <motion.button
               className="cursor-pointer flex justify-between bg-blue-600 px-6 py-3 rounded-full text-white tracking-wider shadow-xl hover:bg-black hover:scale-105 duration-500 hover:ring-1 font-mono w-[180px]"
               whileHover={{ scale: 1.1 }}
@@ -149,50 +152,57 @@ export default function App() {
                 ></path>
               </svg>
             </motion.button>
+            </a>
           </div>
         </div>
       </section>
       <section className="bg-black p-8">
-        <div className="flex flex-col md:flex-row items-center md:space-x-8">
-          <div className="md:w-1/2 mb-6 md:mb-0">
-            <img
-              src={imagebanner}
-              className="rounded-lg shadow-lg"
-            />
+        <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center md:space-x-12 space-y-8 md:space-y-0">
+          <div className="md:w-1/2 w-full">
+              <motion.img
+                src={imagebanner}
+                alt="Banner"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="rounded-xl shadow-2xl w-full"
+              />
           </div>
-          <div className="md:w-1/2">
-            <div className="relative">
-              <AnimatePresence>
-                {slides.map((slide, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: index === currentSlide ? 1 : 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className={`absolute top-0 left-0 w-full ${
-                      index === currentSlide ? 'block' : 'hidden'
-                    }`}
-                  >
-                    <h3 className="text-2xl font-bold mb-4 text-white">{slide.title}</h3>
-                    <p className="text-white mb-4">{slide.content}</p>
-                  </motion.div>
-                ))}
-              </AnimatePresence>          
+          <div className="md:w-1/2 w-full text-center md:text-left">
+            <div className="relative min-h-[180px]">
+              <AnimatePresence mode="wait">
+                {slides.map((slide, index) =>
+                  index === currentSlide ? (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 30 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute top-0 left-0 w-full"
+                    >
+                      <h3 className="text-3xl font-bold text-white mb-4">{slide.title}</h3>
+                      <p className="text-gray-300 text-lg">{slide.content}</p>
+                    </motion.div>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
+            <div className="flex justify-center md:justify-start space-x-3 mt-6">
+              {slides.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                    index === currentSlide ? 'bg-blue-600 scale-125' : 'bg-gray-600'
+                  }`}
+                  whileHover={{ scale: 1.2 }}
+                />
+              ))}
             </div>
           </div>
         </div>
-        <div className="flex justify-center space-x-2 mt-4">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      index === currentSlide ? 'bg-blue-600' : 'bg-gray-500'
-                    }`}
-                  ></button>
-                ))}
-              </div>
         <section className="bg-black py-12">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -231,56 +241,52 @@ export default function App() {
             </div>
           </div>
         </section>
-
         <section className="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white">
-  <h3 className="text-center text-4xl font-bold mb-12">What Users Are Saying</h3>
-
-  <div className="overflow-x-hidden px-6 testimonials-scroll relative">
-    <div className="flex space-x-6 w-max animate-scroll">
-      {testimonials.map((t, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.05, duration: 0.4 }}
-          className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
-        >
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="text-3xl">{t.avatar}</div>
-            <div>
-              <p className="text-lg font-semibold">{t.user}</p>
-              <p className="text-gray-400 text-sm">Verified User</p>
+          <h3 className="text-center text-4xl font-bold mb-12">What Users Are Saying</h3>
+          <div className="overflow-x-hidden px-6 testimonials-scroll relative">
+            <div className="flex space-x-6 w-max animate-scroll">
+              {testimonials.map((t, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
+                  className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
+                >
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="text-3xl">{t.avatar}</div>
+                    <div>
+                      <p className="text-lg font-semibold">{t.user}</p>
+                      <p className="text-gray-400 text-sm">Verified User</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 italic">"{t.text}"</p>
+                </motion.div>
+              ))}
+              {/* Duplicate testimonials to create the infinite loop effect */}
+              {testimonials.map((t, i) => (
+                <motion.div
+                  key={i + testimonials.length}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
+                  className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
+                >
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="text-3xl">{t.avatar}</div>
+                    <div>
+                      <p className="text-lg font-semibold">{t.user}</p>
+                      <p className="text-gray-400 text-sm">Verified User</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 italic">"{t.text}"</p>
+                </motion.div>
+              ))}
             </div>
           </div>
-          <p className="text-gray-300 italic">"{t.text}"</p>
-        </motion.div>
-      ))}
-      {/* Duplicate testimonials to create the infinite loop effect */}
-      {testimonials.map((t, i) => (
-        <motion.div
-          key={i + testimonials.length}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.05, duration: 0.4 }}
-          className="bg-gray-800 min-w-[300px] max-w-[300px] flex-shrink-0 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-2xl transition-all"
-        >
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="text-3xl">{t.avatar}</div>
-            <div>
-              <p className="text-lg font-semibold">{t.user}</p>
-              <p className="text-gray-400 text-sm">Verified User</p>
-            </div>
-          </div>
-          <p className="text-gray-300 italic">"{t.text}"</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-
-     
+        </section>
         <hr className="border-t-2 border-gray-500" />
         <div className=" text-white py-8 mt-8 text-center">
           <div className="space-y-6">
