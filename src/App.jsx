@@ -11,16 +11,49 @@ import windowsLogo from "../public/Images/windowslogo.png";
 const BASE_URL = import.meta.env.BASE_URL;
 
 const testimonials = [
-  { text: "WinWeak boosted my FPS by 20%! Super easy to use!", user: "Alex G.", avatar: "🖱️" },
-  { text: "No more crashes or lag since I started using this. Love it.", user: "Jamie R.", avatar: "🎮" },
+  { text: "thanks souzaisrage for developing this BANGER", user: "nettspendglazer02", avatar: "🖱️" },
+  { text: "ts tuff dawg keep updating ts", user: "XxslimeyohbxX", avatar: "🎮" },
   { text: "The UI is clean, and the features just work. 10/10.", user: "NotZeetaa", avatar: "💻" },
-  { text: "Saved me from constant driver headaches. Thank you!", user: "L31RB4", avatar: "🧠" },
-  { text: "Perfect tool for my gaming setup. Performance boost is real.", user: "Rafael B.", avatar: "🎧" },
-  { text: "I used to struggle with driver updates. Not anymore!", user: "Taylor H.", avatar: "🛠️" },
-  { text: "Made my old laptop feel new again. Incredible.", user: "Jordan C.", avatar: "🔥" },
-  { text: "Highly recommend for anyone who tweaks Windows regularly.", user: "Osama S.", avatar: "🔌" },
-  { text: "Fast, reliable, and lightweight. Just what I needed.", user: "Xavier B.", avatar: "⚡" },
-  { text: "A must-have for gamers and techies alike.", user: "Casey O.", avatar: "🎯" }
+  { text: "Really good app, I recommend ", user: "L31RB4", avatar: "🧠" },
+  { text: "wintoys still better but if u want to help this new dev DOWNLOAD IT", user: "baiaosobased", avatar: "🎧" },
+  { text: "yes , i recommend my own app ", user: "souzaisrage", avatar: "👑" },
+  { text: "Made my old laptop feel new again. Incredible.", user: "00piumbabi", avatar: "🔥" },
+  { text: "good for the lazy ones that dont want to do stuff manually", user: "osamason", avatar: "🔌" },
+  { text: "cool shi , if u reading this u should download", user: "prettifun", avatar: "⚡" },
+  { text: "a must have if u want to keep your pc healthy ig", user: "2hollismyking", avatar: "🎯" }
+];
+
+const functionalities = [
+  {
+    name: "Driver Updates",
+    description: "Scans and installs the latest drivers for your PC using Windows Update API.",
+    tags: ["One Click", "Safe", "Automatic"],
+  },
+  {
+    name: "System Tweaks",
+    description: "Apply registry and visual tweaks for better performance.",
+    tags: ["Customizable", "UI", "Performance"],
+  },
+  {
+    name: "Startup Optimizer",
+    description: "Speed up boot time by disabling unnecessary startup apps.",
+    tags: ["Boost Startup", "Efficiency"],
+  },
+  {
+    name: "System Info Viewer",
+    description: "Check detailed hardware and system info quickly.",
+    tags: ["Advanced", "Informative", "Diagnostic"],
+  },
+  {
+    name: "UI Tweaks",
+    description: "Improve visual experience for dark mode lovers.",
+    tags: ["UI", "One Click", "Aesthetic"],
+  },
+  {
+    name:"Cleaner",
+    description:"Clean your computer in seconds",
+    tags:["One Click","Fast","Health"],
+  },
 ];
 
 export default function App() {
@@ -286,6 +319,77 @@ export default function App() {
               ))}
             </div>
           </div>
+        </section>
+        <section className="max-w-7xl mx-auto px-4 py-20">
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl md:text-4xl font-bold text-center mb-12 text-white"
+      >
+        What WinWeak Can Do for You
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {functionalities.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm p-6 hover:shadow-md transition"
+            whileHover={{ scale: 1.05 }}
+          >
+            <h3 className="text-xl font-semibold mb-2 text-white">{item.name}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{item.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {item.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-sm rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
+    <section className="bg-gray-950 text-white py-16 px-6 md:px-20" id="showcase">
+  {/* Screenshot grid */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[1, 2, 3].map((i) => (
+      <div
+        key={i}
+        className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
+      >
+        <img
+          src={`/screenshots/screen${i}.png`}
+          alt={`WinWeak screenshot ${i}`}
+          className="w-full h-64 object-cover"
+        />
+        <div className="p-4">
+          <p className="text-sm text-gray-400">Feature highlight #{i}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+    <hr className="border-t-2 border-gray-500" />
+    <section className="bg-blue-950 p-8 text-white text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Boost Your PC?</h2>
+          <p className="text-gray-300 mb-6">Get WinWeak now and make your computer fast, clean, and up-to-date.</p>
+          <a href="https://github.com/souzaisrage/winweak-app" target="_blank">
+            <motion.button
+              className="cursor-pointer bg-blue-600 px-6 py-3 rounded-full text-white tracking-wider shadow-xl hover:bg-black hover:scale-105 duration-500 hover:ring-1 font-mono"
+              whileHover={{ scale: 1.1 }}
+            >
+              Download Now 🚀
+            </motion.button>
+          </a>
         </section>
         <hr className="border-t-2 border-gray-500" />
         <div className=" text-white py-8 mt-8 text-center">
