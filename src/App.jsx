@@ -95,7 +95,7 @@ export default function App() {
 
   return (
     <>
-      <header className="flex justify-between items-center p-4 bg-blue-600">
+      <header className="flex justify-between items-center p-4 bg-blue-600 ">
         <div className="flex items-center space-x-4">
           <motion.img
             src={winweaklogo}
@@ -329,7 +329,6 @@ export default function App() {
       >
         What WinWeak Can Do for You
       </motion.h2>
-
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -358,26 +357,62 @@ export default function App() {
         ))}
       </motion.div>
     </section>
-    <section className="bg-gray-950 text-white py-16 px-6 md:px-20" id="showcase">
-  {/* Screenshot grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {[1, 2, 3].map((i) => (
-      <div
-        key={i}
-        className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
-      >
-        <img
-          src={`/screenshots/screen${i}.png`}
-          alt={`WinWeak screenshot ${i}`}
-          className="w-full h-64 object-cover"
-        />
-        <div className="p-4">
-          <p className="text-sm text-gray-400">Feature highlight #{i}</p>
-        </div>
-      </div>
-    ))}
+    <section className="bg-gray-950 py-16 px-4">
+  <div className="max-w-6xl mx-auto text-center">
+    <motion.h2
+      className="text-white text-4xl font-bold mb-6"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      How It Works
+    </motion.h2>
+
+    <div className="grid md:grid-cols-4 gap-8 mt-12">
+      {[
+        { step: "1", text: "Download & install" },
+        { step: "2", text: "Scan your system" },
+        { step: "3", text: "Apply tweaks" },
+        { step: "4", text: "Enjoy the boost!" },
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          className="bg-blue-950/50 text-white p-6 rounded-xl border border-blue-600"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: i * 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-3xl font-bold text-blue-400 mb-2">{item.step}</div>
+          <p className="text-lg">{item.text}</p>
+        </motion.div>
+      ))}
+    </div>
   </div>
 </section>
+
+    <section className="bg-gray-950 text-white py-16 px-6 md:px-20" id="showcase">
+      {/* Screenshot grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
+          >
+            <img
+              src={`/screenshots/screen${i}.png`}
+              alt={`WinWeak screenshot ${i}`}
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-sm text-gray-400">Feature highlight #{i}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+    
     <hr className="border-t-2 border-gray-500" />
     <section className="bg-blue-950 p-8 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Boost Your PC?</h2>
