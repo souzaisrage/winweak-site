@@ -5,7 +5,11 @@ import imagebanner from "../public/Images/easyfastfree.png";
 import Videoloop from "../public/Images/blueloop.mp4";
 import githublogo from "../public/Images/Orion_github.svg";
 import windowsLogo from "../public/Images/windowslogo.png";
+import screenShot from "../public/Images/screenshotwinweak1.png";
+import screenShot2 from "../public/Images/screenshotwinweak2.png";
+import screenShot3 from "../public/Images/screenshotwinweak3.png";
 
+const screenshots = [screenShot, screenShot2, screenShot3];
 
 
 const BASE_URL = import.meta.env.BASE_URL;
@@ -58,6 +62,7 @@ const functionalities = [
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
   const slides = [
     {
       title: "Why Tweaking Matters",
@@ -338,16 +343,16 @@ export default function App() {
         {functionalities.map((item, idx) => (
           <motion.div
             key={idx}
-            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm p-6 hover:shadow-md transition"
+            className="bg-gray-900  border border-gray-700 rounded-lg shadow-sm p-6 hover:shadow-md transition"
             whileHover={{ scale: 1.05 }}
           >
             <h3 className="text-xl font-semibold mb-2 text-white">{item.name}</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">{item.description}</p>
+            <p className="text-gray-300 mb-4">{item.description}</p>
             <div className="flex flex-wrap gap-2">
               {item.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-sm rounded-full"
+                  className="px-3 py-1 bg-blue-900 text-blue-300 text-sm rounded-full"
                 >
                   {tag}
                 </span>
@@ -391,28 +396,45 @@ export default function App() {
     </div>
   </div>
 </section>
-
-    <section className="bg-gray-950 text-white py-16 px-6 md:px-20" id="showcase">
-      {/* Screenshot grid */}
+<section className="bg-gray-950 text-white py-16 px-6 md:px-20" id="showcase">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3].map((i) => (
+        {screenshots.map((imgSrc, i) => (
           <div
             key={i}
-            className="bg-gray-900 rounded-lg overflow-hidden shadow-md hover:scale-105 transition"
+            className="bg-gray-900 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition cursor-pointer"
+            onClick={() => setSelectedImage(imgSrc)}
           >
             <img
-              src={`/screenshots/screen${i}.png`}
-              alt={`WinWeak screenshot ${i}`}
+              src={imgSrc}
+              alt={`WinWeak screenshot ${i + 1}`}
               className="w-full h-64 object-cover"
             />
             <div className="p-4">
-              <p className="text-sm text-gray-400">Feature highlight #{i}</p>
+              <p className="text-sm text-gray-300">Feature highlight #{i + 1}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <div className="relative max-w-3xl w-full px-4">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-red-400"
+            >
+              ✕
+            </button>
+            <img
+              src={selectedImage}
+              alt="Enlarged screenshot"
+              className="rounded-lg w-full max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
-    
     <hr className="border-t-2 border-gray-500" />
     <section className="bg-blue-950 p-8 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Boost Your PC?</h2>
